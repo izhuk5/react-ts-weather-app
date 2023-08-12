@@ -1,0 +1,22 @@
+@import 'normalize.css';
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+body {
+  font: 400 16px/1.5 'Inter', sans-serif;
+}
+
+button,
+select,
+input {
+  font-family: inherit;
+}

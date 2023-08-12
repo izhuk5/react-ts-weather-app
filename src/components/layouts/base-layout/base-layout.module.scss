@@ -1,0 +1,14 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.content {
+  grid-column: span 2;
+}
+
+.info {
+  grid-column: span 1;
+  color: #fff;
+  background: #2b0278;
+}
