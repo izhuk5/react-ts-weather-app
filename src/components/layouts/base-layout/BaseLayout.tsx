@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './base-layout.module.scss';
-import { WeatherInfo } from '../../../features/weather-info/WeatherInfo';
+import { WeatherInfo } from '@/features/weather-info/WeatherInfo';
 
 interface BaseLayoutProps {
   children: React.ReactNode;

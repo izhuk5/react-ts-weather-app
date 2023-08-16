@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { weatherApi } from '../../../api/weather-api';
+import { weatherApi } from '@/api/weather-api';
 
 export const useWeather = () => {
   const [weather, setWeather] = useState({
