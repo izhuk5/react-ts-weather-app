@@ -3,13 +3,13 @@ import styles from './button.module.scss';
 
 interface AButtonProps {
   onClick: () => void;
-  text: string;
+  children: React.ReactNode;
 }
 
-export const AButton: React.FC<AButtonProps> = ({ onClick, text }) => {
+export const AButton: React.FC<AButtonProps> = ({ onClick, children }) => {
   return (
     <button className={styles.button} onClick={onClick}>
-      {text}
+      {children}
     </button>
   );
 };
