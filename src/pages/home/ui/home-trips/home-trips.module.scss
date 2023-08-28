@@ -1,9 +1,9 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  grid-gap: 5rem;
+  grid-template-columns: repeat(4, 200px);
+  grid-gap: 3rem;
 }
 
 .addButton {
-  height: 200px;
+  height: 164px;
 }

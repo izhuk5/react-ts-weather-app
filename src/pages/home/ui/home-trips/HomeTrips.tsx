@@ -12,7 +12,7 @@ export const HomeTrips: FC = () => {
     try {
       const weather = await weatherApi.getWeatherToday('Kyiv');
 
-      console.log(weather);
+      // console.log(weather);
     } catch (e) {
       handleError(e);
     }

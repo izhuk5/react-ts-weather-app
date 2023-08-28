@@ -6,7 +6,7 @@ export const App: FC = () => {
   return (
     <>
       <ToastContainer />
-      <Home />;
+      <Home />
     </>
   );
 };
