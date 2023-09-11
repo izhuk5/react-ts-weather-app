@@ -1,18 +1,17 @@
 import { FC } from 'react';
-// import { AButton, AInput } from '@/components/ui';
-import { BaseLayout } from '@/components/layouts';
 import { HomeTrips } from './ui/home-trips/HomeTrips';
 import { HomeInfo } from './ui/home-info/HomeInfo';
+import styles from './home.module.scss';
 
 export const Home: FC = () => {
-  // const handleButtonClick = () => {
-  //   console.log('Here should be popup with form...');
-  // };
-
   return (
-    <BaseLayout>
-      <HomeTrips />
-      {/* <HomeInfo city="Kyiv" /> */}
-    </BaseLayout>
+    <div className={styles.home}>
+      <div className={styles.home_content}>
+        <HomeTrips />
+      </div>
+      <div className={styles.home__info}>
+        <HomeInfo dateFrom="2021-08-01" dateTo="2021-08-7" />
+      </div>
+    </div>
   );
 };

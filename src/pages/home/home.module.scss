@@ -1,0 +1,15 @@
+.home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: 100vh;
+
+  &__content {
+    grid-column: 1 / 2;
+  }
+
+  &__info {
+    grid-column: 2 / 3;
+    color: #fff;
+    background: #2b0278;
+  }
+}

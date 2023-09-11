@@ -1,0 +1,9 @@
+export const MILLISECONDS_IN_SECOND = 1000;
+export const SECONDS_IN_MINUTE = 60;
+export const MINUTES_IN_HOUR = 60;
+export const HOURS_IN_DAY = 24;
+
+export const ONE_SECOND = MILLISECONDS_IN_SECOND;
+export const ONE_MINUTE = ONE_SECOND * SECONDS_IN_MINUTE;
+export const ONE_HOUR = ONE_MINUTE * MINUTES_IN_HOUR;
+export const ONE_DAY = ONE_HOUR * HOURS_IN_DAY;

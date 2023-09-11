@@ -1,0 +1,14 @@
+.time {
+  display: flex;
+  flex-direction: row;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
