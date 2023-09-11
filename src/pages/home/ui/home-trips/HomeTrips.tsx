@@ -3,6 +3,7 @@ import { TripCard, TripModal } from '@/entities/trip';
 import styles from './home-trips.module.scss';
 import { weatherApi } from '@/entities/weather';
 import { useErrorHandler } from '@/hooks';
+import { HomeInfo } from '../home-info/HomeInfo';
 
 export const HomeTrips: FC = () => {
   const { handleError } = useErrorHandler();
@@ -29,7 +30,7 @@ export const HomeTrips: FC = () => {
           image="https://www.berlin.de/binaries/asset/image_assets/6340464/ratio_2_1/1685015071/1500x750/"
           city="Berlin"
           dateFrom="2021-08-01"
-          dateTo="2021-08-7"
+          dateTo="2021-08-07"
         />
         <button className={styles.addButton} onClick={() => setIsOpen(true)}>
           Add Trip
