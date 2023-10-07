@@ -1,46 +1,61 @@
 import { FC } from 'react';
+import { v4 } from 'uuid';
 import { AModal } from '@/components/ui';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { Formik, Field, Form } from 'formik';
+import { useAppDispatch } from '@/store';
+import { addTrip } from '@/store/tripsSlice';
 
 interface TripModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-interface Values {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
+const initialValues = {
+  city: '',
+  dateFrom: '',
+  dateTo: '',
+  image: '',
+};
+
+type Values = typeof initialValues;
 
 export const TripModal: FC<TripModalProps> = ({ isOpen, onClose }) => {
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (values: Values) => {
+    dispatch(
+      addTrip({
+        city: values.city,
+        dateFrom: values.dateFrom,
+        dateTo: values.dateTo,
+        image: values.image,
+        id: v4(),
+      }),
+    );
+  };
+
   return (
     <AModal isOpen={isOpen} onClose={onClose}>
       <div>
         <h1>Signup</h1>
-        <Formik
-          initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-          }}
-          onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 500);
-          }}
-        >
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form>
-            <label htmlFor="firstName">First Name</label>
-            <Field id="firstName" name="firstName" placeholder="John" />
-
-            <label htmlFor="lastName">Last Name</label>
-            <Field id="lastName" name="lastName" placeholder="Doe" />
-
-            <label htmlFor="email">Email</label>
-            <Field id="email" name="email" placeholder="john@acme.com" type="email" />
-
+            <label>
+              City
+              <Field name="city" placeholder="Berlin" />
+            </label>
+            <label>
+              Date From
+              <Field name="dateFrom" placeholder="2021-08-01" />
+            </label>
+            <label>
+              Date To
+              <Field name="dateTo" placeholder="2021-08-07" />
+            </label>
+            <label>
+              Image URL
+              <Field name="image" placeholder="https://..." />
+            </label>
             <button type="submit">Submit</button>
           </Form>
         </Formik>

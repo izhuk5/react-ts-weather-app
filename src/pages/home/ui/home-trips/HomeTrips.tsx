@@ -4,14 +4,14 @@ import { TripCard, TripModal } from '@/entities/trip';
 import styles from './home-trips.module.scss';
 // import { weatherApi } from '@/entities/weather';
 // import { useErrorHandler } from '@/hooks';
-import { addTrips } from '@/store/trips-slice';
+import { addTrip } from '@/store/tripsSlice';
 import { useAppDispatch, useAppSelector } from '@/store';
 
 export const HomeTrips: FC = () => {
   // const { handleError } = useErrorHandler();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const trips = useAppSelector((state) => state.trips.trips);
+  const trips = useAppSelector((state) => state.trips);
 
   // const getWeatherToday = async () => {
   //   try {
@@ -20,26 +20,24 @@ export const HomeTrips: FC = () => {
   //     console.log(weather);
   //   } catch (e) {
   //     handleError(e);
-  //   }
+  // }
   // };
 
-  const getTrips = () => {
+  const getTrip = () => {
     dispatch(
-      addTrips([
-        {
-          city: 'Kyiv',
-          dateFrom: '2021-08-01',
-          dateTo: '2021-08-07',
-          image:
-            'https://www.berlin.de/binaries/asset/image_assets/6340464/ratio_2_1/1685015071/1500x750/',
-          id: v4(),
-        },
-      ]),
+      addTrip({
+        city: 'Kyiv',
+        dateFrom: '2021-08-01',
+        dateTo: '2021-08-07',
+        image:
+          'https://www.berlin.de/binaries/asset/image_assets/6340464/ratio_2_1/1685015071/1500x750/',
+        id: v4(),
+      }),
     );
   };
 
   useEffect(() => {
-    getTrips();
+    getTrip();
     // getWeatherToday();
   }, []);
 
