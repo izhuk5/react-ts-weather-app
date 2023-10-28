@@ -1,2 +1,26 @@
 .button {
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  transition: transform 0.15s ease-in-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &--primary {
+    background-color: var(--primary-color);
+  }
+
+  &--solid {
+    color: #fff;
+    background-color: var(--primary-color);
+  }
+
+  &--bordered {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
 }

@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { v4 } from 'uuid';
 import { AModal } from '@/components/ui';
-import { Formik, Field, Form } from 'formik';
+import { useFormik } from 'formik';
 import { useAppDispatch } from '@/store';
 import { addTrip } from '@/store/tripsSlice';
+import styles from './trip-modal.module.scss';
 
 interface TripModalProps {
   isOpen: boolean;
@@ -17,12 +18,12 @@ const initialValues = {
   image: '',
 };
 
-type Values = typeof initialValues;
-
 export const TripModal: FC<TripModalProps> = ({ isOpen, onClose }) => {
   const dispatch = useAppDispatch();
 
-  const onSubmit = (values: Values) => {
+  const onSubmit = () => {
+    const { values } = formik;
+
     dispatch(
       addTrip({
         city: values.city,
@@ -34,32 +35,51 @@ export const TripModal: FC<TripModalProps> = ({ isOpen, onClose }) => {
     );
   };
 
+  const formik = useFormik({
+    initialValues,
+    onSubmit: onSubmit,
+  });
+
   return (
-    <AModal isOpen={isOpen} onClose={onClose}>
-      <div>
-        <h1>Signup</h1>
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
-          <Form>
-            <label>
-              City
-              <Field name="city" placeholder="Berlin" />
-            </label>
-            <label>
-              Date From
-              <Field name="dateFrom" placeholder="2021-08-01" />
-            </label>
-            <label>
-              Date To
-              <Field name="dateTo" placeholder="2021-08-07" />
-            </label>
-            <label>
-              Image URL
-              <Field name="image" placeholder="https://..." />
-            </label>
-            <button type="submit">Submit</button>
-          </Form>
-        </Formik>
-      </div>
+    <AModal isOpen={isOpen} title="Add City" onClose={onClose} onConfirm={() => onSubmit()}>
+      <form onSubmit={formik.handleSubmit} className={styles.tripForm}>
+        <label>
+          City
+          <input
+            name="city"
+            placeholder="Berlin"
+            onChange={formik.handleChange}
+            value={formik.values.city}
+          />
+        </label>
+        <label>
+          Date From
+          <input
+            name="dateFrom"
+            placeholder="2021-08-01"
+            onChange={formik.handleChange}
+            value={formik.values.dateFrom}
+          />
+        </label>
+        <label>
+          Date To
+          <input
+            name="dateTo"
+            placeholder="2021-08-07"
+            onChange={formik.handleChange}
+            value={formik.values.dateTo}
+          />
+        </label>
+        <label>
+          Image URL
+          <input
+            name="image"
+            placeholder="https://..."
+            onChange={formik.handleChange}
+            value={formik.values.image}
+          />
+        </label>
+      </form>
     </AModal>
   );
 };
